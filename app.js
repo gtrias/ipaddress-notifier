@@ -6,13 +6,21 @@ const getIP       = require('external-ip')();
 
 var tgBot = new TelegramBot(tgtoken, { polling: true });
 
-getIP((err, ip) => {
-  if (err) {
-    // every service in the list has failed
-    throw err;
-  }
-  notify(ip);
-});
+var lastIp
+
+function listeningChanges() {
+  getIP((err, ip) => {
+    if (err) {
+      // every service in the list has failed
+      return console.log('An error happened %j', err);
+    }
+
+    if (lastIp !== ip) {
+      notify(ip);
+      lastIp = ip;
+    }
+  });
+}
 
 // send notification to tg
 function notify(msg) {
@@ -21,3 +29,7 @@ function notify(msg) {
     tgBot.sendMessage(tgNotifyUsers[i], msg);
   }
 }
+
+// Start app
+listeningChanges()
+setInterval(listeningChanges, 1800000);
