@@ -1,0 +1,7 @@
+{
+    "telegram": {
+        "token": "__TG_TOKEN_HERE__",
+        "notifyUsers": [
+        ]
+    }
+}
