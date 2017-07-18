@@ -1,0 +1,19 @@
+{
+  "name": "ipaddress-notifier",
+  "version": "0.0.1",
+  "description": "Notifies when your public IP address changes",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "telegram",
+    "ipaddress"
+  ],
+  "author": "Genar <genar@acs.li>",
+  "license": "ISC",
+  "dependencies": {
+    "external-ip": "^1.3.1"
+  }
+}
